@@ -15,21 +15,16 @@ Quick Start
 1. Start Azurite
 Option A – Docker (fastest)
 
-bash
-Copy
-Edit
+
 docker run --name azurite -p 10000:10000 -p 10001:10001 -p 10002:10002 mcr.microsoft.com/azure-storage/azurite
 Option B – npm (Node.js)
 
-bash
-Copy
-Edit
+
 npm install -g azurite
 azurite --location . --silent --blobPort 10000 --queuePort 10001 --tablePort 10002
 2. Run the Lab (PowerShell)
 powershell
-Copy
-Edit
+
 pwsh -File scripts/Init-AzuriteStorage.ps1
 pwsh -File scripts/Upload-Blob.ps1
 pwsh -File scripts/List-Blobs.ps1
@@ -42,9 +37,7 @@ Uploads a file artifacts/hello.txt
 Saves a blob listing to artifacts/listing.txt
 
 Bash Alternative
-bash
-Copy
-Edit
+
 bash scripts/init.sh
 bash scripts/upload.sh
 bash scripts/list.sh
@@ -57,9 +50,6 @@ Output of the blob listing command
 
 Example CLI check:
 
-bash
-Copy
-Edit
 az storage blob list --container-name demo --connection-string UseDevelopmentStorage=true --output table
 You should see hello.txt listed.
 
@@ -80,5 +70,14 @@ Portfolio Notes
 What I did: Ran Azure Storage commands against Azurite, created containers and blobs, verified with CLI output.
 
 Why this matters: Shows practical Azure Storage admin workflow without incurring cloud costs.
+
+Results
+Blob Listing Output:
+
+Name       Blob Type    Blob Tier    Length    Content Type    Last Modified              Snapshot
+---------  -----------  -----------  --------  --------------  -------------------------  ----------
+hello.txt  BlockBlob    Hot          57        text/plain      2025-08-12T06:13:55+00:00
+Screenshot Evidence: <img width="677" height="172" alt="Screenshot 2025-08-12 115504" src="https://github.com/user-attachments/assets/f635efd4-58ae-4df7-be01-db668369c113" />
+
 
 What I’d do in production: Enable soft delete and versioning, set lifecycle management rules, store encryption keys in Azure Key Vault, and configure RBAC with least privilege.
